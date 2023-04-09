@@ -83,7 +83,9 @@ export default {
             const wrapperWidth = this.$refs.chartWrapper.clientWidth
 
             const yLabelWidth = Math.min(wrapperWidth * 0.3)
-            const xLabelWidth = (wrapperWidth - yLabelWidth) / this.chartData.length
+
+            const xLabelLeftM = wrapperWidth * (parseInt(this.grid.left) / 100), xLabelRightM = wrapperWidth * (parseInt(this.grid.right) / 100)
+            const xLabelWidth = (wrapperWidth - xLabelLeftM - xLabelRightM) / this.chartData.length
 
             if (this.type === 'bar') {
                 let rotate = 0
@@ -115,15 +117,10 @@ export default {
                         type: 'category',
                         data,
                         axisLabel: {
-                            width: xLabelWidth,
                             rotate,
+                            width: xLabelWidth,
                             interval: 0,
-                            overflow: 'truncate',
-                            formatter: (value, idx) => {
-                                const axis = this.instance.getOption().xAxis[0]
-
-                                return value
-                            }
+                            overflow: 'truncate'
                         }
                     },
                     yAxis: {
