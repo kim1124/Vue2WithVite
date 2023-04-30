@@ -29,9 +29,10 @@ export default {
     };
   },
   mounted() {
-    this.generateSampleData()
+    setInterval(this.generateSampleData, 1000)
   },
   beforeDestroy() {
+    clearInterval(this.interval)
   },
   methods: {
     generateSampleData() {

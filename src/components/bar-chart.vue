@@ -133,12 +133,13 @@ export default {
                     }
                 }
             } else if (this.type === 'column') {
-                const yLabelWidth = labelWidth * 0.3
+                const yLabelWidth = wrapperWidth * 0.3
 
                 axisOption = {
                     xAxis: {
                         show: true,
                         type: 'value',
+                        interval: 'auto',
                         axisLabel: {
                             hideOverlap: true
                         }
